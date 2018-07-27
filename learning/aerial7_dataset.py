@@ -29,7 +29,8 @@ def get_datasets(args, test_seed_offset=0):
     
     #for a simple train/test organization
     trainset = ['train/' + f for f in os.listdir(args.CUSTOM_SET_PATH + '/superpoint_graphs/train')]
-    
+    testset  = ['test/' + f for f in os.listdir(args.CUSTOM_SET_PATH + '/superpoint_graphs/test')]
+
     # Load superpoints graphs
     testlist, trainlist = [], []
     for n in trainset:
@@ -107,8 +108,8 @@ def preprocess_pointclouds(AERIAL7_PATH):
 if __name__ == "__main__":
     import argparse
     parser = argparse.ArgumentParser(description='Large-scale Point Cloud Semantic Segmentation with Superpoint Graphs')
-    parser.add_argument('--CUSTOM_SET_PATH', default='datasets/custom_set')
+    parser.add_argument('--AERIAL7_PATH', default='datasets/aerial7')
     args = parser.parse_args()
-    preprocess_pointclouds(args.CUSTOM_SET_PATH)
+    preprocess_pointclouds(args.AERIAL7_PATH)
 
 
