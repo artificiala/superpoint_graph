@@ -102,9 +102,9 @@ for folder in folders:
             cloud_file = cloud_folder+ file_name_short
             fea_file   = fea_folder  + file_name_short + '.h5'
             spg_file   = spg_folder  + file_name_short + '.h5'
-        elif args.dataset=='custom_dataset':
+        elif args.dataset=='aerial7':
             #adapt to your hierarchy. The following 4 files must be defined
-            data_file   = data_folder      + file_name + '.ply' #or .las
+            data_file   = data_folder      + file_name + '.npy' #or .las
             cloud_file  = cloud_folder     + file_name
             fea_file    = fea_folder       + file_name + '.h5'
             spg_file    = spg_folder       + file_name + '.h5'
