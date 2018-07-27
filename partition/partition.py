@@ -78,7 +78,7 @@ for folder in folders:
                 if os.path.isdir(os.path.join(data_folder,o))]
     elif args.dataset=='sema3d':
         files = glob.glob(data_folder+"*.txt")
-    elif args.dataset=='aerial':
+    elif args.dataset=='aerial7':
         files = glob.glob(data_folder+"*.npy")
         
     if (len(files) == 0):
