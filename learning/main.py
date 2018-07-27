@@ -64,6 +64,7 @@ def main():
     parser.add_argument('--db_test_name', default='val')
     parser.add_argument('--SEMA3D_PATH', default='datasets/semantic3d')
     parser.add_argument('--S3DIS_PATH', default='datasets/s3dis')
+    parser.add_argument('--AERIAL7_PATH', default='datasets/aerial7')
     parser.add_argument('--CUSTOM_SET_PATH', default='datasets/custom_set')
 
     # Model
