@@ -137,6 +137,16 @@ def get_color_from_label(object_label, dataset):
             7: [   0, 255, 255], #'artifact'   ->  cyan
             8: [ 255,   8, 127], #'cars'  ->  pink
             }.get(object_label, -1)
+    elif (dataset == 'aerial7'): #Custom set
+        object_label =  {
+             0: [0   ,   0,   0], #0 .->. black
+            1: [ 200, 200, 200], #1  ->  grey
+            2: [   0,  70,   0], #2  ->  dark green
+            3: [   0, 255,   0], #3  ->  bright green
+            4: [ 255, 255,   0], #4 ->  yellow
+            5: [ 255,   0,   0], #5  ->  red
+            6: [ 148,   0, 211], #6  ->  violet
+            7: [   0, 255, 255], #7   ->  cyan
     elif (dataset == 'custom_dataset'): #Custom set
         object_label =  {
             0: [0   ,   0,   0], #unlabelled .->. black
