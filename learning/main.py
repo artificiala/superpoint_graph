@@ -134,7 +134,7 @@ def main():
         create_dataset = s3dis_dataset.get_datasets
     elif args.dataset=='aerial7':
         import aerial7_dataset
-        dbinfo = custom_dataset.get_info(args)
+        dbinfo = aerial7_dataset.get_info(args)
         create_dataset = custom_dataset.get_datasets
     elif args.dataset=='custom_dataset':
         import custom_dataset #<- to write!
