@@ -41,7 +41,9 @@ elif args.dataset == 'sema3d':
     n_labels = 8
 elif args.dataset == 'custom_dataset':
     folders = ["train/", "test/"]
-    n_labels = 10 #number of classes
+elif args.dataset == 'aerial7':
+    folders = ["train/", "test/"]
+    n_labels = 7 #number of classes
 else:
     raise ValueError('%s is an unknown data set' % dataset)
 
@@ -77,10 +79,7 @@ for folder in folders:
     elif args.dataset=='sema3d':
         files = glob.glob(data_folder+"*.txt")
     elif args.dataset=='custom_dataset':
-        #list all ply files in the folder
-        files = glob.glob(data_folder+"*.ply")
-        #list all las files in the folder
-        files = glob.glob(data_folder+"*.las")
+        files = glob.glob(data_folder+"*.npy")
         
     if (len(files) == 0):
         raise ValueError('%s is empty' % data_folder)
