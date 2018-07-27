@@ -135,7 +135,7 @@ def main():
     elif args.dataset=='aerial7':
         import aerial7_dataset
         dbinfo = aerial7_dataset.get_info(args)
-        create_dataset = custom_dataset.get_datasets
+        create_dataset = aerial7_dataset.get_datasets
     elif args.dataset=='custom_dataset':
         import custom_dataset #<- to write!
         dbinfo = custom_dataset.get_info(args)
