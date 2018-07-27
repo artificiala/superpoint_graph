@@ -147,6 +147,7 @@ def get_color_from_label(object_label, dataset):
             5: [ 255,   0,   0], #5  ->  red
             6: [ 148,   0, 211], #6  ->  violet
             7: [   0, 255, 255], #7   ->  cyan
+            }.get(object_label, -1)
     elif (dataset == 'custom_dataset'): #Custom set
         object_label =  {
             0: [0   ,   0,   0], #unlabelled .->. black
