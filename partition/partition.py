@@ -167,7 +167,7 @@ for folder in folders:
             elif args.dataset=='sema3d':
                  features = geof
                  geof[:,3] = 2. * geof[:, 3]
-            elif args.dataset=='custom_dataset':
+            elif args.dataset=='aerial7':
                 #choose here which features to use for the partition
                  features = geof
                  geof[:,3] = 2. * geof[:, 3]
