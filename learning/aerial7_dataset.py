@@ -28,24 +28,24 @@ def get_datasets(args, test_seed_offset=0):
     """build training and testing set"""
     
     #for a simple train/test organization
-    trainset = ['train/' + f for f in os.listdir(args.CUSTOM_SET_PATH + '/superpoint_graphs/train')]
-    testset  = ['test/' + f for f in os.listdir(args.CUSTOM_SET_PATH + '/superpoint_graphs/test')]
+    trainset = ['train/' + f for f in os.listdir(args.AERIAL7_PATH + '/superpoint_graphs/train')]
+    testset  = ['test/' + f for f in os.listdir(args.AERIAL7_PATH + '/superpoint_graphs/test')]
 
     # Load superpoints graphs
     testlist, trainlist = [], []
     for n in trainset:
-        trainlist.append(spg.spg_reader(args, args.CUSTOM_SET_PATH + '/superpoint_graphs/' + n + '.h5', True))
+        trainlist.append(spg.spg_reader(args, args.AERIAL7_PATH + '/superpoint_graphs/' + n + '.h5', True))
     for n in testset:
-        testlist.append(spg.spg_reader(args, args.CUSTOM_SET_PATH + '/superpoint_graphs/' + n + '.h5', True))
+        testlist.append(spg.spg_reader(args, args.AERIAL7_PATH + '/superpoint_graphs/' + n + '.h5', True))
 
     # Normalize edge features
     if args.spg_attribs01:
         trainlist, testlist = spg.scaler01(trainlist, testlist)
 
     return tnt.dataset.ListDataset([spg.spg_to_igraph(*tlist) for tlist in trainlist],
-                                    functools.partial(spg.loader, train=True, args=args, db_path=args.CUSTOM_SET_PATH)), \
+                                    functools.partial(spg.loader, train=True, args=args, db_path=args.AERIAL7_PATH)), \
            tnt.dataset.ListDataset([spg.spg_to_igraph(*tlist) for tlist in testlist],
-                                    functools.partial(spg.loader, train=False, args=args, db_path=args.CUSTOM_SET_PATH, test_seed_offset=test_seed_offset))
+                                    functools.partial(spg.loader, train=False, args=args, db_path=args.AERIAL7_PATH, test_seed_offset=test_seed_offset))
 
 def get_info(args):
     edge_feats = 0
