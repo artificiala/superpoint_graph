@@ -176,7 +176,7 @@ def read_s3dis_format(raw_path, label_out=True):
         i_object = i_object + 1
     return xyz, rgb, room_labels
 #------------------------------------------------------------------------------
-def read_aerial7_format(raw_path, label_out=True):
+def read_aerial7_format(raw_path):
 #aerial7 specific
     """extract data from aerial7 .npy"""
     data = np.load(raw_path)
