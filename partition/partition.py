@@ -129,6 +129,9 @@ for folder in folders:
                 else:
                     xyz, rgb = read_semantic3d_format(data_file, 0, '', args.voxel_width, args.ver_batch)
                     labels = []
+            elif args.dataset=='aerial7':
+                # datafiles
+                xyz, rgb, labels = read_aerial7_format(data_file)
             elif args.dataset=='custom_dataset':
                 #implement in provider.py your own read_custom_format outputing xyz, rgb, labels
                 #example for ply files
