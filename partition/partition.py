@@ -78,7 +78,7 @@ for folder in folders:
                 if os.path.isdir(os.path.join(data_folder,o))]
     elif args.dataset=='sema3d':
         files = glob.glob(data_folder+"*.txt")
-    elif args.dataset=='custom_dataset':
+    elif args.dataset=='aerial':
         files = glob.glob(data_folder+"*.npy")
         
     if (len(files) == 0):
@@ -132,6 +132,8 @@ for folder in folders:
             elif args.dataset=='aerial7':
                 # datafiles
                 xyz, rgb, labels = read_aerial7_format(data_file)
+                if args.voxel_width > 0:
+                    xyz, rgb, labels = libply_c.prune(xyz, args.voxel_width, rgb, labels, n_labels)
             elif args.dataset=='custom_dataset':
                 #implement in provider.py your own read_custom_format outputing xyz, rgb, labels
                 #example for ply files
