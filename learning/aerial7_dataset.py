@@ -34,9 +34,9 @@ def get_datasets(args, test_seed_offset=0):
     # Load superpoints graphs
     testlist, trainlist = [], []
     for n in trainset:
-        trainlist.append(spg.spg_reader(args, args.AERIAL7_PATH + '/superpoint_graphs/' + n + '.h5', True))
+        trainlist.append(spg.spg_reader(args, args.AERIAL7_PATH + '/superpoint_graphs/' + n , True))
     for n in testset:
-        testlist.append(spg.spg_reader(args, args.AERIAL7_PATH + '/superpoint_graphs/' + n + '.h5', True))
+        testlist.append(spg.spg_reader(args, args.AERIAL7_PATH + '/superpoint_graphs/' + n , True))
 
     # Normalize edge features
     if args.spg_attribs01:
