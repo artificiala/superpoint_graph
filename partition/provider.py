@@ -380,6 +380,11 @@ def read_features(file_name):
         labels = np.array(data_file["labels"])
     else:
         labels = []
+    
+    if "rgb" in data_file:
+        rgb = data_file["rgb"][:]
+    else:
+        rgb = []
     #---create the arrays---
     geof = np.zeros((n_ver, 4), dtype='float32')
     #---fill the arrays---
@@ -388,7 +393,7 @@ def read_features(file_name):
     geof[:, 2] = data_file["scattering"]
     geof[:, 3] = data_file["verticality"]
     xyz = data_file["xyz"][:]
-    rgb = data_file["rgb"][:]
+    # rgb = data_file["rgb"][:]
     source = data_file["source"][:]
     target = data_file["target"][:]
     distances = data_file["distances"][:]
