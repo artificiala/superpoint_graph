@@ -40,6 +40,8 @@ if args.dataset == 's3dis':
     n_labels = 13
 if args.dataset == 'sema3d':
     n_labels = 8    
+if args.dataset == 'aerial7':
+    n_labels = 7
 if args.dataset == 'custom_dataset':
     n_labels = 10    
 #---load the values------------------------------------------------------------
@@ -105,7 +107,7 @@ if res_out and bool(args.upsample):
     elif args.dataset=='sema3d':#really not recommended unless you are very confident in your hardware
         data_file  = data_folder + file_name + ".txt"
         xyz_up, rgb_up = read_semantic3d_format(data_file, 0, '', 0, args.ver_batch)
-    elif args.dataset=='custom_dataset':
+    elif args.dataset=='aerial7':
         data_file  = data_folder + file_name + ".ply"
         xyz_up, rgb_up = read_ply(data_file)
     del rgb_up
