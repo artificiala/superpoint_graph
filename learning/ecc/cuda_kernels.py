@@ -30,6 +30,8 @@ def get_dtype(t):
 def get_kernel_func(kname, ksrc, dtype):
     if kname+dtype not in modules:
         ksrc = ksrc.replace('DTYPE', dtype)
+        ksrc.encode('utf-8')
+        (kname+dtype+'.cu').encode('utf-8')
         prog = Program(ksrc.encode('utf-8'), (kname+dtype+'.cu').encode('utf-8'))
         ptx = prog.compile()
         log = prog._interface.nvrtcGetProgramLog(prog._program)
