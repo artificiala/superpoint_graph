@@ -31,7 +31,7 @@ def get_datasets(args, test_seed_offset=0):
     trainset = ['train/' + f for f in os.listdir(args.AERIAL7_PATH + '/superpoint_graphs/train')]
     testset  = ['test/' + f for f in os.listdir(args.AERIAL7_PATH + '/superpoint_graphs/test')]
 
-    Load superpoints graphs
+    #Load superpoints graphs
     testlist, trainlist = [], []
     for n in trainset:
         if fname.endswith(".h5"):
