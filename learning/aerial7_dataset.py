@@ -94,10 +94,9 @@ def preprocess_pointclouds(AERIAL7_PATH):
                 rgb = rgb/255.0 - 0.5
 
                 P = np.concatenate([xyz, rgb, elpsv], axis=1)
-                f.close()
                 f = h5py.File(pathC + file, 'r')
                 numc = len(f['components'].keys())
-                f.close()
+                
                 with h5py.File(pathP + file, 'w') as hf:
                     for c in range(numc):
                         idx = f['components/{:d}'.format(c)][:].flatten()
@@ -106,7 +105,6 @@ def preprocess_pointclouds(AERIAL7_PATH):
                             idx = idx[ii]
 
                         hf.create_dataset(name='{:d}'.format(c), data=P[idx,...])
-                hf.close()
                 
 
 if __name__ == "__main__":
