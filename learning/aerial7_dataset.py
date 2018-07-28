@@ -31,12 +31,16 @@ def get_datasets(args, test_seed_offset=0):
     trainset = ['train/' + f for f in os.listdir(args.AERIAL7_PATH + '/superpoint_graphs/train')]
     testset  = ['test/' + f for f in os.listdir(args.AERIAL7_PATH + '/superpoint_graphs/test')]
 
-    # Load superpoints graphs
+    Load superpoints graphs
     testlist, trainlist = [], []
     for n in trainset:
-        trainlist.append(spg.spg_reader(args, args.AERIAL7_PATH + '/superpoint_graphs/' + n , True))
+        if fname.endswith(".h5"):
+            trainlist.append(spg.spg_reader(args, args.AERIAL7_PATH + '/superpoint_graphs/' + n + '.h5', True))
     for n in testset:
-        testlist.append(spg.spg_reader(args, args.AERIAL7_PATH + '/superpoint_graphs/' + n , True))
+        if fname.endswith(".h5"):
+            testlist.append(spg.spg_reader(args, args.AERIAL7_PATH + '/superpoint_graphs/' + n + '.h5', True))
+
+   
 
     # Normalize edge features
     if args.spg_attribs01:
@@ -92,10 +96,10 @@ def preprocess_pointclouds(AERIAL7_PATH):
                 rgb = rgb/255.0 - 0.5
 
                 P = np.concatenate([xyz, rgb, elpsv], axis=1)
-
+                f.close()
                 f = h5py.File(pathC + file, 'r')
                 numc = len(f['components'].keys())
-
+                f.close()
                 with h5py.File(pathP + file, 'w') as hf:
                     for c in range(numc):
                         idx = f['components/{:d}'.format(c)][:].flatten()
@@ -104,6 +108,8 @@ def preprocess_pointclouds(AERIAL7_PATH):
                             idx = idx[ii]
 
                         hf.create_dataset(name='{:d}'.format(c), data=P[idx,...])
+                hf.close()
+                
 
 if __name__ == "__main__":
     import argparse
