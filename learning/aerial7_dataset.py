@@ -34,11 +34,9 @@ def get_datasets(args, test_seed_offset=0):
     #Load superpoints graphs
     testlist, trainlist = [], []
     for n in trainset:
-        if fname.endswith(".h5"):
-            trainlist.append(spg.spg_reader(args, args.AERIAL7_PATH + '/superpoint_graphs/' + n + '.h5', True))
+        trainlist.append(spg.spg_reader(args, args.AERIAL7_PATH + '/superpoint_graphs/' + n, True))
     for n in testset:
-        if fname.endswith(".h5"):
-            testlist.append(spg.spg_reader(args, args.AERIAL7_PATH + '/superpoint_graphs/' + n + '.h5', True))
+        testlist.append(spg.spg_reader(args, args.AERIAL7_PATH + '/superpoint_graphs/' + n, True))
 
    
 
