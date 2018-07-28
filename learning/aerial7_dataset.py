@@ -62,7 +62,7 @@ def get_info(args):
         'node_feats': 11 if args.pc_attribs=='' else len(args.pc_attribs),
         'edge_feats': edge_feats,
         'classes': 7, #CHANGE TO YOUR NUMBER OF CLASS
-        'inv_class_map': {0:'ceiling', 1:'floor', 2:'wall', 3:'column', 4:'beam', 5:'window', 6:'door', 7:'table'},
+        'inv_class_map': {0:'ceiling', 1:'floor', 2:'wall', 3:'column', 4:'beam', 5:'window', 6:'door'},
     }
 
 def preprocess_pointclouds(AERIAL7_PATH):
