@@ -34,6 +34,11 @@ LINK_DIRECTORIES(${PYTHON_LIBRARY_DIRS})
 ###  Build target library  ###
 ##############################
 
+if(APPLE)
+    SET(CMAKE_CXX_COMPILER "g++-7")
+    SET(CMAKE_C_COMPILER "gcc-7")
+endif()
+
 set(CMAKE_LD_FLAG "${CMAKE_LD_FLAGS} -shared -Wl -fPIC --export-dynamic -fopenmp -O3 -Wall")
 
 add_library(ply_c SHARED ply_c.cpp)
