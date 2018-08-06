@@ -193,8 +193,12 @@ def read_aerial7_format(raw_path):
     data = np.load(raw_path)
     xyz = np.array(data[:, 0:3], dtype='float32')
     rgb = np.array(data[:, 4:7], dtype='uint8')
-    label = np.array(data[:, 7], dtype='uint8')
-    return xyz, rgb, label
+    label_no = np.array(data[:, 7], dtype='uint8')
+
+    labels = np.zeros((data.shape[0], 7))
+    for i in range(data.shape[0]):
+        labels[i][label_no[i][0]] = 1
+    return xyz, rgb, labels
 #------------------------------------------------------------------------------
 def object_name_to_label(object_class):
     """convert from object name in S3DIS to an int"""
