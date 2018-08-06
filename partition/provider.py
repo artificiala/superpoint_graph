@@ -197,7 +197,7 @@ def read_aerial7_format(raw_path):
 
     labels = np.zeros((data.shape[0], 7))
     for i in range(data.shape[0]):
-        labels[i][label_no[i][0]] = 1
+        labels[i][label_no[i]] = 1
     return xyz, rgb, labels
 #------------------------------------------------------------------------------
 def object_name_to_label(object_class):
