@@ -6,6 +6,10 @@ CMAKE_MINIMUM_REQUIRED(VERSION 3.5)
 
 PROJECT(LIBGEOF)
 
+if(APPLE)
+    SET(CMAKE_CXX_COMPILER "g++-7")
+    SET(CMAKE_C_COMPILER "gcc-7")
+endif()
 SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -std=c++11 -fopenmp -O3")
 
 ##############################
@@ -34,10 +38,6 @@ LINK_DIRECTORIES(${PYTHON_LIBRARY_DIRS})
 ###  Build target library  ###
 ##############################
 
-if(APPLE)
-    SET(CMAKE_CXX_COMPILER "g++-7")
-    SET(CMAKE_C_COMPILER "gcc-7")
-endif()
 
 set(CMAKE_LD_FLAG "${CMAKE_LD_FLAGS} -shared -Wl -fPIC --export-dynamic -fopenmp -O3 -Wall")
 
