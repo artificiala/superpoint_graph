@@ -187,18 +187,22 @@ def read_s3dis_format(raw_path, label_out=True):
         i_object = i_object + 1
     return xyz, rgb, room_labels
 #------------------------------------------------------------------------------
+def create_one_hot(size, val):
+    idx = int(val)
+    vector = np.zeros(size)
+    vector[idx] = 1
+    return vector
+
 def read_aerial7_format(raw_path):
 #aerial7 specific
     """extract data from aerial7 .npy"""
     data = np.load(raw_path)
     xyz = np.array(data[:, 0:3], dtype='float32')
     rgb = np.array(data[:, 4:7], dtype='uint8')
-    label_no = np.array(data[:, 7], dtype='uint8')
+    labels = np.array(data[:, 7], dtype='uint8')
 
-    labels = np.zeros((data.shape[0], 7))
-    for i in range(data.shape[0]):
-        labels[i][label_no[i]] = 1
-    return xyz, rgb, labels
+    labels_onehot = np.array([create_one_hot(8, ele) for ele in labels])
+    return xyz, rgb, labels_onehot
 #------------------------------------------------------------------------------
 def object_name_to_label(object_class):
     """convert from object name in S3DIS to an int"""
