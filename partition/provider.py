@@ -199,9 +199,9 @@ def read_aerial7_format(raw_path):
     data = np.load(raw_path)
     xyz = np.array(data[:, 0:3], dtype='float32')
     rgb = np.array(data[:, 4:7], dtype='uint8')
-    labels = np.array(data[:, 7], dtype='uint8')
+    labels = np.array(data[:, 7:8], dtype='uint8')
 
-    ##labels = np.array([create_one_hot(7, ele) for ele in labels])
+    labels = np.array([create_one_hot(7, ele) for ele in labels])
     return xyz, rgb, labels
 #------------------------------------------------------------------------------
 def object_name_to_label(object_class):
