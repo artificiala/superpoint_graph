@@ -37,7 +37,7 @@ if args.dataset == 's3dis':
     folders = ["Area_1/", "Area_2/", "Area_3/", "Area_4/", "Area_5/", "Area_6/"]
     n_labels = 13
 elif args.dataset == 'sema3d':
-    folders = ["train"]
+    folders = ["train/"]
     n_labels = 8
 elif args.dataset == 'custom_dataset':
     folders = ["train/", "test/"]
