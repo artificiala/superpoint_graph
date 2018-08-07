@@ -1,0 +1,6 @@
+partition/cut-pursuit/**
+partition/ply_c/CMakeCache.txt
+partition/ply_c/cmake_install.cmake
+partition/ply_c/Makefile
+partition/ply_c/CMakeFiles/**
+
