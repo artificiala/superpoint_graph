@@ -348,7 +348,7 @@ def resume(args, dbinfo):
     print('see state dict')
     model.load_state_dict(checkpoint['state_dict'])
     print(checkpoint['state_dict'])
-    break
+    
 
     if 'optimizer' in checkpoint: optimizer.load_state_dict(checkpoint['optimizer'])
     for group in optimizer.param_groups: group['initial_lr'] = args.lr
