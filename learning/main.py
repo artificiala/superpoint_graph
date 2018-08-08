@@ -346,8 +346,9 @@ def resume(args, dbinfo):
     # model.load_state_dict(state)
 
     print('see state dict')
-    model.load_state_dict(checkpoint['state_dict'])
     print(checkpoint['state_dict'])
+
+    model.load_state_dict(checkpoint['state_dict'])
     
 
     if 'optimizer' in checkpoint: optimizer.load_state_dict(checkpoint['optimizer'])
