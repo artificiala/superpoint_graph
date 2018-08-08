@@ -342,8 +342,8 @@ def resume(args, dbinfo):
     model.ecc = graphnet.GraphNetwork(args.model_config, 7, [dbinfo['edge_feats']] + args.fnet_widths, args.fnet_orthoinit, args.fnet_llbias,args.fnet_bnidx, args.edge_mem_limit)
     
     state = checkpoint['state_dict']
-    state['ecc.1.bias'] = np.random.rand(7,1)
-    state['ecc.1.weight'] = np.random.rand(7,352)
+    state['ecc.1.bias'] = np.random.rand(7)
+    state['ecc.1.weight'] = np.random.rand(8,352)
 
     model.load_state_dict(state)
 
