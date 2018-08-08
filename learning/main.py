@@ -339,11 +339,16 @@ def resume(args, dbinfo):
 
     optimizer = create_optimizer(args, model)
     
-    model.load_state_dict(checkpoint['state_dict'])
+    # model.ecc = graphnet.GraphNetwork(args.model_config, 7, [dbinfo['edge_feats']] + args.fnet_widths, args.fnet_orthoinit, args.fnet_llbias,args.fnet_bnidx, args.edge_mem_limit)
 
-    # for aerial7 fine-tuning
-    
-    model.ecc = graphnet.GraphNetwork(args.model_config, 7, [dbinfo['edge_feats']] + args.fnet_widths, args.fnet_orthoinit, args.fnet_llbias,args.fnet_bnidx, args.edge_mem_limit)
+    # state = model.state_dict()
+    # state.update(partial)
+    # model.load_state_dict(state)
+
+    print('see state dict')
+    model.load_state_dict(checkpoint['state_dict'])
+    print(checkpoint['state_dict'])
+    break
 
     if 'optimizer' in checkpoint: optimizer.load_state_dict(checkpoint['optimizer'])
     for group in optimizer.param_groups: group['initial_lr'] = args.lr
