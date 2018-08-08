@@ -338,7 +338,7 @@ def resume(args, dbinfo):
     model = create_model(checkpoint['args'], dbinfo) #use original arguments, architecture can't change
 
     optimizer = create_optimizer(args, model)
-    
+    print('edge feature', dbinfo['edge_feats'])
     model.ecc = graphnet.GraphNetwork(args.model_config, 7, [dbinfo['edge_feats']] + args.fnet_widths, args.fnet_orthoinit, args.fnet_llbias,args.fnet_bnidx, args.edge_mem_limit)
     
     state = checkpoint['state_dict']
