@@ -339,16 +339,18 @@ def resume(args, dbinfo):
 
     optimizer = create_optimizer(args, model)
     
-    # model.ecc = graphnet.GraphNetwork(args.model_config, 7, [dbinfo['edge_feats']] + args.fnet_widths, args.fnet_orthoinit, args.fnet_llbias,args.fnet_bnidx, args.edge_mem_limit)
+    model.ecc = graphnet.GraphNetwork(args.model_config, 7, [dbinfo['edge_feats']] + args.fnet_widths, args.fnet_orthoinit, args.fnet_llbias,args.fnet_bnidx, args.edge_mem_limit)
+    
+    state = checkpoint['state_dict']
+    state.ecc.1.bias = np.random.rand(7,1)
+    state.ecc.1.wight = np.random.rand(7,352)
 
-    # state = model.state_dict()
-    # state.update(partial)
+    model.load_state_dict(state)
+
+    # print('see state dict')
+    # print(checkpoint['state_dict'])
+
     # model.load_state_dict(state)
-
-    print('see state dict')
-    print(checkpoint['state_dict'])
-
-    model.load_state_dict(checkpoint['state_dict'])
     
 
     if 'optimizer' in checkpoint: optimizer.load_state_dict(checkpoint['optimizer'])
