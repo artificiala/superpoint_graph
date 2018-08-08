@@ -343,7 +343,7 @@ def resume(args, dbinfo):
     
     state = checkpoint['state_dict']
     state['ecc.1.bias'] = np.random.rand(7,1)
-    state['ecc.1.wight'] = np.random.rand(7,352)
+    state['ecc.1.weight'] = np.random.rand(7,352)
 
     model.load_state_dict(state)
 
