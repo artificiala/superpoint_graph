@@ -17,7 +17,7 @@ parser.add_argument('--cvfold', default='123456', help='which fold to consider')
 args = parser.parse_args()
 
 C = ConfusionMatrix
-C.number_of_labels = 13
+C.number_of_labels = 7
 C.confusion_matrix=np.zeros((C.number_of_labels, C.number_of_labels))
 
 class_map = {0:'a', 1:'b', 2:'c', 3:'d', 4:'e', 5:'f', 6:'g', 7:'h'}
