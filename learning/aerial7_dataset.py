@@ -81,7 +81,7 @@ def get_info(args):
 def preprocess_pointclouds(AERIAL7_PATH):
     """ Preprocesses data by splitting them by components and normalizing."""
 
-    for n in ['train', 'test']:
+    for n in ['Area_1', 'Area_2', 'Area_3', 'Area_4', 'Area_5', 'Area_6']:
         pathP = '{}/parsed/{}/'.format(AERIAL7_PATH, n)
         pathD = '{}/features/{}/'.format(AERIAL7_PATH, n)
         pathC = '{}/superpoint_graphs/{}/'.format(AERIAL7_PATH, n)
