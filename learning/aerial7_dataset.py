@@ -42,11 +42,11 @@ def get_datasets(args, test_seed_offset=0):
     testlist, trainlist = [], []
     for n in range(1,7):
         if n != args.cvfold:
-            path = '{}/superpoint_graphs/trainval_{:d}/'.format(args.AERIAL7_PATH, n)
+            path = '{}/superpoint_graphs/Area_{:d}/'.format(args.AERIAL7_PATH, n)
             for fname in sorted(os.listdir(path)):
                 if fname.endswith(".h5"):
                     trainlist.append(spg.spg_reader(args, path + fname, True))
-    path = '{}/superpoint_graphs/trainval_{:d}/'.format(args.AERIAL7_PATH, args.cvfold)
+    path = '{}/superpoint_graphs/Area_{:d}/'.format(args.AERIAL7_PATH, args.cvfold)
     for fname in sorted(os.listdir(path)):
         if fname.endswith(".h5"):
             testlist.append(spg.spg_reader(args, path + fname, True))

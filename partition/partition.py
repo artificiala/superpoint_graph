@@ -42,7 +42,7 @@ elif args.dataset == 'sema3d':
 elif args.dataset == 'custom_dataset':
     folders = ["train/", "test/"]
 elif args.dataset == 'aerial7':
-    folders = ["train/", "test/"]
+    folders = ["Area_1/", "Area_2/", "Area_3/", "Area_4/", "Area_5/", "Area_6/"]
     n_labels = 7 #number of classes
 else:
     raise ValueError('%s is an unknown data set' % dataset)
